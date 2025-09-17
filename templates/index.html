@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTSP Detection Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">🎥 RTSP Stream Monitoring Dashboard</span>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="card p-3 mb-4 shadow-sm">
+            <h5 class="card-title">Stream Configuration</h5>
+            <div class="row g-2">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="rtspUrl" placeholder="rtsp://...">
+                        <label for="rtspUrl">RTSP Stream URL</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="cameraId" placeholder="CAM01">
+                        <label for="cameraId">Camera ID</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <button class="btn btn-primary" id="startButton">Start Monitoring</button>
+                <button class="btn btn-danger" id="stopButton" disabled>Stop Monitoring</button>
+            </div>
+            <div id="statusMessage" class="mt-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card detection-card" id="garbage_card">
+                    <div class="card-header">🗑️ Garbage Overflow</div>
+                    <img id="garbage_img" src="https://via.placeholder.com/400x225.png?text=No+Detection" class="card-img-top" alt="Garbage Detection">
+                    <div class="card-body">
+                        <p class="card-text"><strong>Camera:</strong> <span id="garbage_cam">N/A</span></p>
+                        <p class="card-text"><strong>Time:</strong> <span id="garbage_time">N/A</span></p>
+                        <p class="card-text"><strong>Date:</strong> <span id="garbage_date">N/A</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card detection-card" id="animals_card">
+                    <div class="card-header">🐕 Stray Animals</div>
+                    <img id="animals_img" src="https://via.placeholder.com/400x225.png?text=No+Detection" class="card-img-top" alt="Animal Detection">
+                    <div class="card-body">
+                        <p class="card-text"><strong>Camera:</strong> <span id="animals_cam">N/A</span></p>
+                        <p class="card-text"><strong>Time:</strong> <span id="animals_time">N/A</span></p>
+                        <p class="card-text"><strong>Date:</strong> <span id="animals_date">N/A</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card detection-card" id="roads_card">
+                    <div class="card-header">🚧 Damaged Roads</div>
+                    <img id="roads_img" src="https://via.placeholder.com/400x225.png?text=No+Detection" class="card-img-top" alt="Road Detection">
+                    <div class="card-body">
+                        <p class="card-text"><strong>Camera:</strong> <span id="roads_cam">N/A</span></p>
+                        <p class="card-text"><strong>Time:</strong> <span id="roads_time">N/A</span></p>
+                        <p class="card-text"><strong>Date:</strong> <span id="roads_date">N/A</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
